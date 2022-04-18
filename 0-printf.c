@@ -15,27 +15,33 @@ int _printf(const char *format, ...)
 	indexd = 0;
 	char *dest;
 
-	dest = malloc(sizeof(char) * (indexd + 1));
+	dest = malloc(sizeof(char) * (indexd));
 	if (dest == 0)
 		return (1);
 
 	va_start(ap, format);
-	for (; format[indexf] != '\0'; f++)
+	while (format[indexf] != '\0')
 	{
+		indexf++;
 		if (format[indexf] == '%' && format[indexf + 1] == 'c')
 		{
 			dest[indexd] = (char)va_arg(ap, int);
 			indexd++;
 			indexf++;
-		if (format[indexf] == '%' && format[indexf + 1] == 's')
+		if (format[indexf] == '%')
 		{
-			dest[indexd] = (char)va_arg(ap, int);
+			indexd += _putchar(format[i]);
 			indexd++;
-		}
+			indexf++;
+			if (format[indexf + 1] == 's')
+			{
+				indexd += _putchar(format[i + 1]);
+			}
 		else
 		{
 			return (-1);
 		}
+		va_end(ap);
 		return (indexd);
 	}
 }
