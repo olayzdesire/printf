@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdarg.h>
 /**
- * ptintf - Produces output.
+ * _printf - Produces output.
  * @format: A character string.
  * Return: Return the number of characters printed.
  */
