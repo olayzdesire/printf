@@ -11,13 +11,11 @@ int _printf(const char *format, ...)
 {
 	va_list ap;
 
-	indexf, indexd = 0;
-	len;
-	char *dest;
+	int indexf = 0;
+	int indexd = 0;
 
-	while (len < dest)
-		len++;
-	dest = malloc(sizeof(char) * (len));
+	int *dest = &indexd;
+
 	if (dest == NULL)
 		return (1);
 
@@ -29,23 +27,22 @@ int _printf(const char *format, ...)
 			indexf++;
 			if (format[indexf] == 'c')
 			{
-				dest[indexd] = va_arg(ap, char);
+				dest[indexd] = va_arg(ap, int);
 				indexd++;
 				indexf++;
 				if (format[indexf] == '%')
 				{
 					indexf++;
 					if (format[indexf] == 's')
-					dest[indexd] = va_arg(ap, char);
+					dest[indexd] = va_arg(ap, int);
 
 					else
 						return (-1);
-
-					va_end(ap);
-					return (indexd);
 				}
 			}
 		}
 	}
+	va_end(ap);
+	return (indexd);
 }
 
