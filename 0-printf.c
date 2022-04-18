@@ -11,42 +11,44 @@
 int _printf(const char *format, ...)
 {
 	va_list ap;
-	index f = 0;
-	index d = 0;
+
+	indexf = 0;
+	indexd = 0;
+
 	char *dest;
 
-	dest = malloc(sizeof(char) * (index d + 1));
+	dest = malloc(sizeof(char) * (indexd + 1));
 	if (dest == 0)
 	{
-		return(NULL);
+		return (NULL);
 	}
 
 	va_start(ap, format);
-	for (; format[index f] != '\0'; f++)
+	for (; format[indexf] != '\0'; f++)
 	{
-		if (format[index f] == '%')
+		if (format[indexf] == '%')
 		{
 			f++;
-		if (format[index f] == 'c')
+		if (format[indexf] == 'c')
 		{
-			dest[index d] = (char)va_arg(ap, int);
+			dest[indexd] = (char)va_arg(ap, int);
 
-			index d++;
+			indexd++;
 		}
 
-		if (format[index f] == 's')
+		if (format[indexf] == 's')
 		{
-			dest[index d] = (char)va_arg(ap, int);
+			dest[indexd] = (char)va_arg(ap, int);
 
-			index d++;
+			indexd++;
 		}
 
 		else
 		{
-			return(NULL);
+			return (NULL);
 		}
 
-		return(dest);
+		return (dest);
 		}
 
 		dest == '\0';
