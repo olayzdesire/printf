@@ -11,56 +11,41 @@ int _printf(const char *format, ...)
 {
 	va_list ap;
 
-	indexf = 0;
-	indexd = 0;
+	indexf, indexd = 0;
 	len;
 	char *dest;
-	
+
 	while (len < dest)
-	{
 		len++;
 	dest = malloc(sizeof(char) * (len));
-	if (dest == 0)
+	if (dest == NULL)
 		return (1);
 
-		va_start(ap, format);
-		while (format[indexf] != '\0')
+	va_start(ap, format);
+	while (format[indexf] != '\0')
+	{
+		if (format[indexf] == '%')
 		{
-			indexf++
-			if (format[indexf] == '%' && format[indexf + 1] == 'c')
+			indexf++;
+			if (format[indexf] == 'c')
 			{
-				dest[indexd] = va_arg(ap, int);
-				indexd += _putchar(format[indexf]);
+				dest[indexd] = va_arg(ap, char);
 				indexd++;
 				indexf++;
-				if (format[indexf + 1] == 'c')
+				if (format[indexf] == '%')
 				{
-					dest[indexd] = va_arg(ap, char);
-					indexd += _putchar(format[indexf]);
-					indexd++;
 					indexf++;
-					if (format[indexf] == '%')
-					{
-						dest[indexd] = va_arg(ap, int)
-						indexd += _putchar(format[indexf]);
-						indexd++;
-						indexf++;
-						if (format[indexf + 1] == 's')
-						{
-							dest[indexd] = va_arg(ap, char);
-							indexd += _putchar(format[indexf + 1]);
-						}
-						else
-						{
-							return (-1);
-						}
-						va_end(ap);
-						return (indexd);
-					}
+					if (format[indexf] == 's')
+					dest[indexd] = va_arg(ap, char);
+
+					else
+						return (-1);
+
+					va_end(ap);
+					return (indexd);
 				}
 			}
 		}
 	}
-}	
-	
-	
+}
+
