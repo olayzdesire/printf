@@ -12,37 +12,36 @@ int _printf(const char *format, ...)
 	va_list ap;
 
 	int indexf = 0;
-	int indexd = 0;
-
-	int *dest = &indexd;
-
-	if (dest == NULL)
-		return (1);
+	int count = 0;
 
 	va_start(ap, format);
 	while (format[indexf] != '\0')
 	{
 		if (format[indexf] == '%')
 		{
+			count = putchar(format[indexf]);
 			indexf++;
 			if (format[indexf] == 'c')
 			{
-				dest[indexd] = va_arg(ap, int);
-				indexd++;
+				va_arg(ap, int);
+				count += putchar(format[indexf]);
+				count++;
 				indexf++;
 				if (format[indexf] == '%')
 				{
 					indexf++;
 					if (format[indexf] == 's')
-					dest[indexd] = va_arg(ap, int);
-
-					else
-						return (-1);
+					va_arg(ap, char *);
+					count += putchar(format[indexf]);
+				}
+				else
+				{
+					return (-1);
 				}
 			}
 		}
 	}
 	va_end(ap);
-	return (indexd);
+	return (count);
 }
 
