@@ -29,6 +29,7 @@ int _printf(const char *format, ...)
 				indexf++;
 				if (format[indexf] == '%')
 				{
+					count += putchar(format[indexf]);
 					indexf++;
 					if (format[indexf] == 's')
 					va_arg(ap, char *);
