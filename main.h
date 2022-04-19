@@ -2,6 +2,6 @@
 #define MAIN_H
 
 int _printf(const char *format, ...);
-int _putchar(format[indexf]);
+int _putchar(char format);
 
 #endif
