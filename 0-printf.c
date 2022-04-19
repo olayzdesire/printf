@@ -26,19 +26,20 @@ int _printf(const char *format, ...)
 				va_arg(ap, int);
 				count += putchar(format[indexf]);
 				count++;
+			}
+			else if (format[indexf] == '%')
+			{
+				count += putchar(format[indexf]);
 				indexf++;
-				else if (format[indexf] == '%')
-				{
-					count += putchar(format[indexf]);
-					indexf++;
-					else if (format[indexf] == 's')
-					va_arg(ap, char *);
-					count += putchar(format[indexf]);
-				}
-				else
-				{
-					return (-1);
-				}
+			}
+			else if (format[indexf] == 's')
+			{
+				va_arg(ap, char *);
+				count += putchar(format[indexf]);
+			}
+			else
+			{
+				return (-1);
 			}
 		}
 	}
