@@ -19,7 +19,7 @@ int _printf(const char *format, ...)
 	{
 		if (format[indexf] == '%')
 		{
-			count = putchar(format[indexf]);
+			count += putchar(format[indexf]);
 			indexf++;
 			if (format[indexf] == 'c')
 			{
