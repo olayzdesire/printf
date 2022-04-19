@@ -20,6 +20,7 @@ int _printf(const char *format, ...)
 		if (format[indexf] == '%')
 		{
 			indexf++;
+			count = putchar(format[indexf]);
 			if (format[indexf] == 'c')
 			{
 				count += va_arg(ap, int);
