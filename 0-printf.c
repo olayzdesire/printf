@@ -36,6 +36,7 @@ int _printf(const char *format, ...)
 		{
 			if (format[indexf + 1] == 's')
 			{
+				indexf++;
 				save[count] = (char)va_arg(ap, int);
 			}
 		}
