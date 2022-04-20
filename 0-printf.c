@@ -28,13 +28,12 @@ int _printf(const char *format, ...)
 			}
 			else if (format[indexf] == '%')
 			{
-				count += _putchar(format[indexf]);
 				count++;
 			}
 			else if (format[indexf] == 's')
 			{
 				va_arg(ap, int);
-				count = _putchar(format[indexf]);
+				count += _putchar(format[indexf]);
 			}
 			else
 			{
