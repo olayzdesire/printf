@@ -23,18 +23,18 @@ int _printf(const char *format, ...)
 			if (format[indexf] == 'c')
 			{
 				count += va_arg(ap, int);
-				putchar(format[indexf]);
+				_putchar(format[indexf]);
 				count++;
 			}
 			else if (format[indexf] == '%')
 			{
-				count += putchar(format[indexf]);
+				count += _putchar(format[indexf]);
 				count++;
 			}
 			else if (format[indexf] == 's')
 			{
 				count += va_arg(ap, int);
-				putchar(format[indexf]);
+				_putchar(format[indexf]);
 			}
 			else
 			{
