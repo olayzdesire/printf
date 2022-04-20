@@ -13,36 +13,43 @@ int _printf(const char *format, ...)
 
 	int indexf = 0;
 	int count = 0;
+	char *save;
 
-	va_start(ap, format);
+	if (save == NULL)
+		return (1);
+
+	save = malloc(sizeof(char) * 1024);
+
 	while (format[indexf] != '\0')
 	{
-		if (format[indexf] == '%')
+		indexf++;
+		if format[indexf] == '%');
 		{
 			indexf++;
-			if (format[indexf] == 'c')
+			if (format[indexf + 1] == 'c')
 			{
-				va_arg(ap, int);
-				count = _putchar(format[indexf]);
-				count++;
-			}
-			else if (format[indexf] == '%')
-			{
-				count++;
-			}
-			else if (format[indexf] == 's')
-			{
-				va_arg(ap, int);
-				count += _putchar(format[indexf]);
-			}
-			else
-			{
-				count = format[indexf];
+				save[count] = (char)va_arg(ap, int);
 				count++;
 			}
 		}
+		indexf++;
+		else if (format[indexf] == '%');
+		{
+			indexf++;
+			if (format[indexf + 1] == 's')
+			{
+				save[count] = (char *)va_arg(ap, int);
+			}
+		}
+		else
+		{
+			save[count] = format[indexf];
+			count++;
+		}
+		indexf++
 	}
+	write(1, save, indexf++);
 	va_end(ap);
-	return (count);
+	free(save);
+	return (indexf);
 }
-
