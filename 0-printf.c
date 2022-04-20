@@ -15,15 +15,15 @@ int _printf(const char *format, ...)
 	int count = 0;
 	char *save;
 
+	save = malloc(sizeof(char) * 1024);
+
 	if (save == NULL)
 		return (1);
-
-	save = malloc(sizeof(char) * 1024);
 
 	while (format[indexf] != '\0')
 	{
 		indexf++;
-		if format[indexf] == '%');
+		if (format[indexf] == '%')
 		{
 			indexf++;
 			if (format[indexf + 1] == 'c')
@@ -33,12 +33,12 @@ int _printf(const char *format, ...)
 			}
 		}
 		indexf++;
-		else if (format[indexf] == '%');
+		if (format[indexf] == '%')
 		{
 			indexf++;
 			if (format[indexf + 1] == 's')
 			{
-				save[count] = (char *)va_arg(ap, int);
+				save[count] = (char)va_arg(ap, int);
 			}
 		}
 		else
@@ -46,9 +46,8 @@ int _printf(const char *format, ...)
 			save[count] = format[indexf];
 			count++;
 		}
-		indexf++
+		indexf++;
 	}
-	write(1, save, indexf++);
 	va_end(ap);
 	free(save);
 	return (indexf);
