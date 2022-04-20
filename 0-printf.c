@@ -28,7 +28,7 @@ int _printf(const char *format, ...)
 			indexf++;
 			if (format[indexf] == 'c')
 			{
-				save[count] = (char)va_arg(ap, int);
+				va_arg(ap, int);
 				count += putchar(format[indexf]);
 				count++;
 			}
@@ -52,6 +52,5 @@ int _printf(const char *format, ...)
 		indexf++;
 	}
 	va_end(ap);
-	free(save);
 	return (indexf);
 }
