@@ -24,20 +24,23 @@ int _printf(const char *format, ...)
 	{
 		if (format[indexf] == '%')
 		{
+			count = putchar(format[indexf]);
 			indexf++;
 			if (format[indexf + 1] == 'c')
 			{
 				save[count] = (char)va_arg(ap, int);
-				putchar(format[indexf +1]);
+				count += putchar(format[indexf +1]);
 				count++;
 			}
 		}
 		indexf++;
 		if (format[indexf] == '%')
 		{
+			indexf++;
 			if (format[indexf + 1] == 's')
 			{
 				save[count] = (char)va_arg(ap, int);
+				count += putchar(format[indexf + 1]);
 			}
 		}
 		else
