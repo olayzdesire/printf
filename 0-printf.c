@@ -32,15 +32,16 @@ int _printf(const char *format, ...)
 				count += putchar(format[indexf]);
 				count++;
 			}
-		}
-		indexf++;
-		if (format[indexf] == '%')
-		{
+		
 			indexf++;
-			if (format[indexf] == 's')
+			if (format[indexf] == '%')
 			{
-				save[count] = (char)va_arg(ap, int);
-				count += putchar(format[indexf]);
+				indexf++;
+				if (format[indexf] == 's')
+				{
+					va_arg(ap, char*);
+					count += putchar(format[indexf]);
+				}
 			}
 		}
 		else
