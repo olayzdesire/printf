@@ -22,11 +22,10 @@ int _printf(const char *format, ...)
 
 	while (format[indexf] != '\0')
 	{
-		indexf++;
 		if (format[indexf] == '%')
 		{
 			indexf++;
-			if (format[indexf + 1] == 'c')
+			if (format[indexf] == 'c')
 			{
 				save[count] = (char)va_arg(ap, int);
 				count++;
@@ -35,7 +34,6 @@ int _printf(const char *format, ...)
 		indexf++;
 		if (format[indexf] == '%')
 		{
-			indexf++;
 			if (format[indexf + 1] == 's')
 			{
 				save[count] = (char)va_arg(ap, int);
