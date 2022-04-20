@@ -38,10 +38,12 @@ int _printf(const char *format, ...)
 			}
 			else
 			{
-				return (-1);
+				count = format[indexf];
+				count++;
 			}
 		}
 	}
+	write(1, format, count++);
 	va_end(ap);
 	return (count);
 }
