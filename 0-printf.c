@@ -38,7 +38,6 @@ int _printf(const char *format, ...)
 			if (format[indexf + 1] == 's')
 			{
 				save[count] = (char)va_arg(ap, int);
-				putchar(format[indexf + 1]);
 			}
 		}
 		else
