@@ -1,3 +1,7 @@
+#include <stdio.h>
+#include <stdlib>
+#include "main.h"
+
 /**
  * _putchar - write the char c to stdout.
  * @c: the character that is to be printed to stdout.
