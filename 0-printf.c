@@ -44,7 +44,7 @@ int _printf(const char *format, ...)
 						save[count] = str[indexs];
 						count++;
 						indexs++;
-					count += putchar(format[indexf]);
+						count += putchar(format[indexf]);
 					}
 				}
 			}
@@ -55,8 +55,9 @@ int _printf(const char *format, ...)
 			count++;
 		}
 		indexf++;
-	}
+	}	
+	write(1, save, count++);
 	va_end(ap);
 	free(save);
-	return (indexf);
+	return (--count);
 }
