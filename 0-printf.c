@@ -17,17 +17,19 @@ int _printf(const char *format, ...)
 	char *save;
 
 	save = malloc(sizeof(char) * 1024);
+	if (save == NULL)
+		return (1);
 
 	while (format[indexf] != '\0')
 	{
 		if (format[indexf] == '%')
 		{
-			count = putchar(format[indexf]);
+			count = _putchar(format[indexf]);
 			indexf++;
 			if (format[indexf] == 'c')
 			{
 				save[count] = va_arg(ap, int);
-				count += putchar(format[indexf]);
+				count += _putchar(format[indexf]);
 				count++;
 			}
 		
@@ -44,7 +46,7 @@ int _printf(const char *format, ...)
 						save[count] = str[indexs];
 						count++;
 						indexs++;
-						count += putchar(format[indexf]);
+						count += _putchar(format[indexf]);
 					}
 				}
 			}
