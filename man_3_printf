@@ -1,4 +1,4 @@
-.TH man_3_printf "18 October 2022" "Custom made printf function"
+.TH man_3_printf "18 April 2022" "Custom made printf function"
 .SH NAME
 .B _printf
 - implement _printf function (almost) from scratch
