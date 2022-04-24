@@ -7,7 +7,7 @@
  * @format: A character string.
  * Return: Return the number of characters printed.
  */
-int _printf(const char *format, ...)
+int _printf(const char *format, ...);
 {
 	va_list ap;
 
@@ -24,30 +24,26 @@ int _printf(const char *format, ...)
 	{
 		if (format[indexf] == '%')
 		{
-			count = _putchar(format[indexf]);
 			indexf++;
 			if (format[indexf] == 'c')
 			{
-				save[count] = va_arg(ap, int);
-				count += _putchar(format[indexf]);
+				save[count] = (char)va_arg(ap, int);
 				count++;
 			}
-		
-			indexf++;
-			if (format[indexf] == '%')
+			else if (format[indexf] == '%')
 			{
-				indexf++;
-				if (format[indexf] == 's')
+				save[count] = format[indexf];
+				count++;
+			}
+			else if (format[indexf] == 's')
+			{
+				str = va_arg(ap, char*);
+				indexs = 0;
+				while (str[indexs])
 				{
-					str = va_arg(ap, char*);
-					indexs = 0;
-					while (str[indexs])
-					{
-						save[count] = str[indexs];
-						count++;
-						indexs++;
-						count += _putchar(format[indexf]);
-					}
+					save[count] = str[indexs];
+					count++;
+					indexs++;
 				}
 			}
 		}
